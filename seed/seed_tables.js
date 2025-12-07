@@ -23,4 +23,5 @@ export default async function seedBlagues() {
   } catch (error) {
     console.error("❌ Erreur lors du seed :", error);
   }
+  
 }
