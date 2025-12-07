@@ -1,0 +1,8 @@
+// TEST POUR CREER UNE NOUVELLE BLAGUE
+POST http://localhost:3001/blagues/ajouterblague
+Content-Type: application/json
+
+{
+  "question": "Que fait une fraise sur un cheval ?",
+  "reponse": "Tagada tagada !"
+}

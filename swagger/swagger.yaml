@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info:
+  title: API Carambar Blagues
+  version: 1.0.0
+
+servers:
+  - url: /
+
+paths:
+  /blagues/lesblagues:
+    get:
+      summary: Récupère toutes les blagues
+      responses:
+        "200":
+          description: Liste des blagues
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    question:
+                      type: string
+                    reponse:
+                      type: string
+                    created_at:
+                      type: string
+                      format: date-time
+                    updated_at:
+                      type: string
+                      format: date-time
+
+  /blagues/ajouterblague:
+    post:
+      summary: Ajouter une nouvelle blague
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                reponse:
+                  type: string
+              required:
+                - question
+                - reponse
+      responses:
+        "201":
+          description: Blague créée
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  question:
+                    type: string
+                  reponse:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+
+  /blagues/{id}:
+    get:
+      summary: Récupère une blague par ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Blague trouvée
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  question:
+                    type: string
+                  reponse:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+        "404":
+          description: Blague non trouvée
+
+  /blagues/random:
+    get:
+      summary: Récupère une blague aléatoire
+      responses:
+        "200":
+          description: Blague aléatoire
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  question:
+                    type: string
+                  reponse:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
