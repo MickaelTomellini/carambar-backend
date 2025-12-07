@@ -26,26 +26,28 @@ app.get("/", (req, res) => {
   res.send("Bienvenue sur l'API Carambar Blagues !");
 });
 
-
 async function startServer() {
   try {
-   
-    await sequelize.sync({ alter: true });
-    console.log("DB synchronized ✅");
+    await sequelize.authenticate();
+    console.log("Connexion à la base SQLite réussie ✅");
 
-    
+    await sequelize.sync({ alter: true });
+    console.log("Tables synchronisées avec succès ✅");
+
     const count = await Blague.count();
     if (count === 0) {
-      console.log("Table vide, insertion des seeds...");
-      await seedBlagues(); 
+      console.log("Table vide → insertion du seed");
+      await seedBlagues();
     } else {
-      console.log("Table déjà remplie, seed non nécessaire.");
+      console.log(`Table déjà remplie (${count} blagues) → aucun seed nécessaire`);
     }
 
     const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => console.log(`running on http://localhost:${PORT}`));
-  } catch (err) {
-    console.error("DB sync error:", err);
+    app.listen(PORT, () =>
+      console.log(`Serveur démarré sur http://localhost:${PORT}`)
+    );
+  } catch (error) {
+    console.error("Erreur lors du démarrage du serveur :", error);
   }
 }
 

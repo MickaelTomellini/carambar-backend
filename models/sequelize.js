@@ -1,6 +1,9 @@
 import { Sequelize } from "sequelize";
 import path from "path";
 import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,7 +25,3 @@ try {
 } catch (error) {
   console.error("Impossible de se connecter à la base SQLite ❌", error);
 }
-
-// Pour créer les tables automatiquement
-await sequelize.sync({ alter: true });
-console.log("Tables synchronisées avec succès ✅");

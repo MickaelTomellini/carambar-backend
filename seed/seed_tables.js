@@ -1,5 +1,4 @@
-// seeds/blagues.seed.js
-import { sequelize, Blague } from "../models/index.js";
+import { Blague } from "../models/index.js";
 
 export const blagues = [
   { question: "Quelle est la femelle du hamster ?", reponse: "L’Amsterdam" },
@@ -14,16 +13,14 @@ export const blagues = [
   { question: "Quel est le comble pour un joueur de bowling ?", reponse: "Perdre la boule" }
 ];
 
-
-const seedBlagues = async () => {
+export default async function seedBlagues() {
+  console.log("🚧 Insertion des données de seed dans les tables");
   try {
-    console.log("🚧 Insertion des données de seed dans les tables");
-    await Promise.all(blagues.map(b => Blague.create(b)));
+    for (const b of blagues) {
+      await Blague.create(b);
+    }
     console.log("✅ Insertion des données de seed terminée");
   } catch (error) {
     console.error("❌ Erreur lors du seed :", error);
   }
-};
-
-export default seedBlagues;
-
+}
