@@ -18,15 +18,12 @@ export const blagues = [
 const seedBlagues = async () => {
   try {
     console.log("🚧 Insertion des données de seed dans les tables");
-    
     await Promise.all(blagues.map(b => Blague.create(b)));
-
     console.log("✅ Insertion des données de seed terminée");
   } catch (error) {
     console.error("❌ Erreur lors du seed :", error);
-  } finally {
-    await sequelize.close(); 
   }
 };
 
-seedBlagues();
+export default seedBlagues;
+
