@@ -14,14 +14,13 @@ export const blagues = [
 ];
 
 export default async function seedBlagues() {
-  console.log("🚧 Insertion des données de seed dans les tables");
+  console.log("🚧 Insertion des données de seed dans les tables...");
   try {
     for (const b of blagues) {
       await Blague.create(b);
     }
-    console.log("✅ Insertion des données de seed terminée");
+    console.log("✅ Insertion des données de seed terminée !");
   } catch (error) {
     console.error("❌ Erreur lors du seed :", error);
   }
-  
 }

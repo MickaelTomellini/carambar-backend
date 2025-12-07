@@ -31,16 +31,8 @@ async function startServer() {
     await sequelize.authenticate();
     console.log("Connexion à la base SQLite réussie ✅");
 
-    await sequelize.sync({ alter: true });
+    await sequelize.sync();
     console.log("Tables synchronisées avec succès ✅");
-
-    const count = await Blague.count();
-    if (count === 0) {
-      console.log("Table vide → insertion du seed");
-      await seedBlagues();
-    } else {
-      console.log(`Table déjà remplie (${count} blagues) → aucun seed nécessaire`);
-    }
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () =>
