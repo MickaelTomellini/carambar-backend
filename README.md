@@ -3,8 +3,10 @@
 ## Description
 API Node/Express/Sequelize (SQLite). 
 
-Back-end Render: https://carambar-backend-figj.onrender.com
-Documentation Swagger disponible : https://carambar-backend-figj.onrender.com/api-docs
+- **Backend API** : https://carambar-backend-figj.onrender.com
+- **Documentation Swagger** : https://carambar-backend-figj.onrender.com/api-docs
+  
+---
 
 ## Endpoints
 - `GET /blagues` - lire toutes les blagues
