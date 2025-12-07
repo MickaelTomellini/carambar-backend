@@ -1,7 +1,10 @@
 # Carambar Blagues - API (Backend)
 
 ## Description
-API Node/Express/Sequelize (SQLite). Documentation Swagger disponible : http://localhost:3001/api-docs
+API Node/Express/Sequelize (SQLite). 
+
+Back-end Render: https://carambar-backend-figj.onrender.com
+Documentation Swagger disponible : https://carambar-backend-figj.onrender.com/api-docs
 
 ## Endpoints
 - `GET /blagues` - lire toutes les blagues
