@@ -7,6 +7,7 @@ import blagueRoutes from "./routes/blagueRoutes.js";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
 import dotenv from "dotenv";
+import { Blague } from "./models/index.js";;
 
 dotenv.config();
 const app = express();
@@ -16,14 +17,14 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use("/blagues", blagueRoutes);
+
 const swaggerDocument = YAML.load(path.join(__dirname, "swagger", "swagger.yaml"));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get("/", (req, res) => {
   res.send("Bienvenue sur l'API Carambar Blagues !");
 });
-
-app.use("/blagues", blagueRoutes);
 
 sequelize.sync()
   .then(() => {

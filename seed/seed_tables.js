@@ -1,7 +1,7 @@
 // seeds/blagues.seed.js
 import { sequelize, Blague } from "../models/index.js";
 
-const blagues = [
+export const blagues = [
   { question: "Quelle est la femelle du hamster ?", reponse: "L’Amsterdam" },
   { question: "Que dit un oignon quand il se cogne ?", reponse: "Aïe" },
   { question: "Quel est l'animal le plus heureux ?", reponse: "Le hibou, parce que sa femme est chouette." },

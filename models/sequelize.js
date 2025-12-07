@@ -7,12 +7,12 @@ const __dirname = path.dirname(__filename);
 
 export const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: path.join(__dirname, "../database.sqlite"),
-  logging: false, 
+  storage: process.env.DATABASE_FILE || path.join(__dirname, "../database.sqlite"),
+  logging: false,
   define: {
-    createdAt: "created_at", 
+    createdAt: "created_at",
     updatedAt: "updated_at",
-    underscored: true,   
+    underscored: true,
   },
 });
 
@@ -22,3 +22,7 @@ try {
 } catch (error) {
   console.error("Impossible de se connecter à la base SQLite ❌", error);
 }
+
+// Pour créer les tables automatiquement
+await sequelize.sync({ alter: true });
+console.log("Tables synchronisées avec succès ✅");
