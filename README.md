@@ -12,10 +12,10 @@ API Node/Express/Sequelize (SQLite).
 ---
 
 ## Endpoints
-- `GET /blagues` - lire toutes les blagues
-- `POST /blagues` - créer un blague
-- `GET /blagues/:id` - lire un blague
-- `GET /blagues/random` - aléatoire
+- `GET blagues/lesblagues` - lire toutes les blagues
+- `POST blagues/ajouterblague` - créer/ajouter une blague
+- `GET blagues/:id` - lire une blague
+- `GET blagues/random` - blague aléatoire
 
 ## Installation locale
 ```bash
